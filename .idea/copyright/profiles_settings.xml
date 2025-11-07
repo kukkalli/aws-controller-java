@@ -1,0 +1,8 @@
+<component name="CopyrightManager">
+    <settings default="https://netz-ai.com">
+        <module2copyright>
+            <element module="Project Files" copyright="https://netz-ai.com" />
+            <element module="All" copyright="https://netz-ai.com" />
+        </module2copyright>
+    </settings>
+</component>
