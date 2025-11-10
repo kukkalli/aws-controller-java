@@ -177,6 +177,14 @@
         </dependency>
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
+            <artifactId>ssm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>regions</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
             <artifactId>iam</artifactId>
         </dependency>
         <dependency>
@@ -190,6 +198,12 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>route53</artifactId>
+        </dependency>
+        <!-- Install the OpenAI -->
+        <dependency>
+            <groupId>com.openai</groupId>
+            <artifactId>openai-java</artifactId>
+            <version>4.7.1</version>
         </dependency>
 	</dependencies>
 	<dependencyManagement>

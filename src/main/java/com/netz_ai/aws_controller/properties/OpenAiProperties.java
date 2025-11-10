@@ -20,10 +20,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "aws")
+@ConfigurationProperties(prefix = "openai")
 @Data
-public class AwsProps {
-    String accessKeyId;
-    String secretAccessKey;
-    String region;
+public class OpenAiProperties {
+    String baseUrl;
+    int timeoutSeconds;
+    String model;
+    String apiKey;
 }

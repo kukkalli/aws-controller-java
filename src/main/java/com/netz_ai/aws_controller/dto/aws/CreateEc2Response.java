@@ -13,17 +13,24 @@
  * limitations under the License.
  */
 
-package com.netz_ai.aws_controller.properties;
+package com.netz_ai.aws_controller.dto.aws;
 
-import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
+import lombok.Value;
 
-@Component
-@ConfigurationProperties(prefix = "aws")
-@Data
-public class AwsProps {
-    String accessKeyId;
-    String secretAccessKey;
-    String region;
+@Value
+@Builder
+public class CreateEc2Response {
+    @Schema(example = "i-0123456789abcdef0")
+    String instanceId;
+
+    @Schema(example = "t2.micro")
+    String instanceType;
+
+    @Schema(example = "ami-0abcdef1234567890")
+    String imageId;
+
+    @Schema(example = "running")
+    String state;
 }

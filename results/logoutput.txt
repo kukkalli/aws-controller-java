@@ -1,0 +1,45 @@
+2025-11-10T19:21:41.220+01:00 INFO  [-[]] c.n.a.s.o.OpenAIAWSControllerService - JSON result:
+{
+  "name": "web-1",
+  "keyName": "",
+  "useAl2023": true,
+  "instanceType": "t2.micro",
+  "securityGroups": [],
+  "userData": "#!/bin/bash\nset -euo pipefail\n\n# Update system\nyum update -y\n\n# Install httpd\nyum install -y httpd\n\n# Enable and start service\nsystemctl enable --now httpd\n\n# Create a basic index.html\nmkdir -p /var/www/html\ncat > /var/www/html/index.html << 'EOF'\n<!doctype html>\n<html>\n<head>\n<meta charset=utf-8>\n<title>Welcome</title>\n</head>\n<body>\n<h1>It works!</h1>\n<p>Amazon Linux web server is running.</p>\n</body>\n</html>\nEOF\n\n# Adjust permissions\nchown root:root /var/www/html/index.html\nchmod 0644 /var/www/html/index.html\n\n# Health marker\necho initialized > /var/local/userdata_web_initialized\n"
+}
+2025-11-10T19:21:41.222+01:00 INFO  [-[]] c.n.a.s.o.OpenAIAWSControllerService - CreateEc2Request object:
+CreateEc2Request(name=web-1, keyName=, useAl2023=true, amiId=null, instanceType=t2.micro, userData=#!/bin/bash
+set -euo pipefail
+
+# Update system
+yum update -y
+
+# Install httpd
+yum install -y httpd
+
+# Enable and start service
+systemctl enable --now httpd
+
+# Create a basic index.html
+mkdir -p /var/www/html
+cat > /var/www/html/index.html << 'EOF'
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>Welcome</title>
+</head>
+<body>
+<h1>It works!</h1>
+<p>Amazon Linux web server is running.</p>
+</body>
+</html>
+EOF
+
+# Adjust permissions
+chown root:root /var/www/html/index.html
+chmod 0644 /var/www/html/index.html
+
+# Health marker
+echo initialized > /var/local/userdata_web_initialized
+, securityGroups=[])

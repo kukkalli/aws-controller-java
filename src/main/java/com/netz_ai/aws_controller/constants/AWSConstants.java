@@ -13,17 +13,9 @@
  * limitations under the License.
  */
 
-package com.netz_ai.aws_controller.properties;
+package com.netz_ai.aws_controller.constants;
 
-import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
-
-@Component
-@ConfigurationProperties(prefix = "aws")
-@Data
-public class AwsProps {
-    String accessKeyId;
-    String secretAccessKey;
-    String region;
+public class AWSConstants {
+    public static final String BASE_URL = "/api/v1/aws";
+    public static final String BASE_URL_EC2 = BASE_URL + "/ec2";
 }

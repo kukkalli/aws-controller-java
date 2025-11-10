@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 
-package com.netz_ai.aws_controller.properties;
+package com.netz_ai.aws_controller.dto.openai;
 
-import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
+import lombok.Value;
 
-@Component
-@ConfigurationProperties(prefix = "aws")
-@Data
-public class AwsProps {
-    String accessKeyId;
-    String secretAccessKey;
-    String region;
+@Value
+@Builder
+public class PromptResponse {
+    @Schema(example = "gpt-4")
+    String model;
+
+    @Schema(example = "stop")
+    String finishReason;
+
+    @Schema(description = "Assistant text output")
+    String content;
+
+    @Schema(example = "123")
+    Integer promptTokens;
+
+    @Schema(example = "456")
+    Integer completionTokens;
+
+    @Schema(example = "579")
+    Integer totalTokens;
 }

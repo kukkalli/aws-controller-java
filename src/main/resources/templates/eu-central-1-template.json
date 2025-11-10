@@ -1,0 +1,8 @@
+{
+  "name": "web-1",
+  "keyName": "AWS-SAA-C003-RSA",
+  "useAl2023": true,
+  "instanceType": "t2.micro",
+  "securityGroups": ["sg-074b93f3fa5e149d4", "sg-03ab1f5cc977d5c85", "sg-064f4f6b368686377"],
+  "userData": "#!/bin/bash\nyum update -y\necho 'hello' > /var/www/html/index.html\nyum install -y httpd\nsystemctl enable --now httpd"
+}
