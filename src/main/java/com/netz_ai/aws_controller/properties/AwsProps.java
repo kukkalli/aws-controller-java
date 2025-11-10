@@ -13,16 +13,18 @@
  * limitations under the License.
  */
 
-package com.netz_ai.aws_controller;
+package com.netz_ai.aws_controller.properties;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
-@SpringBootApplication
-public class AwsControllerApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(AwsControllerApplication.class, args);
-	}
+@Component
+@ConfigurationProperties(prefix = "aws")
+@Data
+public class AwsProps {
+    String accessKeyId;
+    String secretAccessKey;
+    String region;
 
 }

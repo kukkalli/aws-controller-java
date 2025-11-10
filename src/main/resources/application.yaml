@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2025-2025. Netz AI GmbH <https://netz-ai.com>
+# Copyright (c) 2025. Netz AI GmbH <https://netz-ai.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,9 +20,12 @@ spring:
       api-key: ${OPENAI_API_KEY}
   application:
     name: aws-controller-java
-  data:
-    rest:
-      base-path: /api
+  config:
+    # Load key=value from local .env if present
+    import: optional:file:/home/hanif/IdeaProjects/aws-controller-java/.env[.properties]
+#  data:
+#    rest:
+#      base-path: /api
   datasource:
     url: ${DB_URL:jdbc:mariadb://127.0.0.1:3306/aws-controller?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC}
     username: ${DB_USERNAME:aws_hanif}
@@ -69,8 +72,8 @@ spring:
 server:
   port: ${SERVER_PORT:8080}
   shutdown: graceful
-  servlet:
-    context-path: /api/v1
+#  servlet:
+#    context-path: /api/v1
   address: ${SERVER_ADDRESS:127.0.0.1}
   compression:
     enabled: true
@@ -94,8 +97,10 @@ management:
 
 logging:
   level:
+    org:
+      springframework.boot.context.config: debug
     root: warn
-    org.springframework.security: info
+#    org.springframework.security: info
     org.hibernate.SQL: debug    # Turn to INFO in prod
     com.netz_ai.aws_controller: debug
     tomcat: error
@@ -113,21 +118,22 @@ logging:
     path: log/
 
 # Swagger UI at /swagger-ui.html
-springdoc:
-  api-docs:
-    path: /openapi
-  swagger-ui:
-    path: /swagger-ui.html
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#  api-docs:
+#    enabled: true
+#    path: /openapi
 
 # JWT & security (used by SecurityConfig / TokenService)
-security:
-  jwt:
-    issuer: ${JWT_ISSUER:aws-controller}
-    secret: ${JWT_SECRET:please-change-in-prod}
-    access-token:
-      ttl: ${JWT_ACCESS_TTL:PT15M}      # ISO-8601 duration
-    refresh-token:
-      ttl: ${JWT_REFRESH_TTL:P7D}
+#security:
+#  jwt:
+#    issuer: ${JWT_ISSUER:aws-controller}
+#    secret: ${JWT_SECRET:please-change-in-prod}
+#    access-token:
+#      ttl: ${JWT_ACCESS_TTL:PT15M}      # ISO-8601 duration
+#    refresh-token:
+#      ttl: ${JWT_REFRESH_TTL:P7D}
 
 # CORS defaults (can be tightened per env)
 cors:
@@ -140,14 +146,15 @@ aws:
   access_key_id: ${AWS_ACCESS_KEY_ID}
   secret_access_key: ${AWS_SECRET_ACCESS_KEY}
 
-aws_controller:
-  seed:
-    enabled: true
-    admin:
-      username: admin
-      email: admin@example.com
-      password: P@ssw0rd!
-    client:
-      enabled: true
-      id: svc_bootstrap
-      name: Bootstrap Client
+#aws_controller:
+#  seed:
+#    enabled: true
+#    admin:
+#      username: admin
+#      email: admin@example.com
+#      password: P@ssw0rd!
+#    client:
+#      enabled: true
+#      id: svc_bootstrap
+#      name: Bootstrap Client
+

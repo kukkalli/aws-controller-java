@@ -13,16 +13,7 @@
  * limitations under the License.
  */
 
-package com.netz_ai.aws_controller;
+package com.netz_ai.aws_controller.controller.aws;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class AwsControllerApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(AwsControllerApplication.class, args);
-	}
-
+public interface IRESTController<K, T> {
 }

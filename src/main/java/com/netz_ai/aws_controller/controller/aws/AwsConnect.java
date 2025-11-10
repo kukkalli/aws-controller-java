@@ -13,16 +13,20 @@
  * limitations under the License.
  */
 
-package com.netz_ai.aws_controller;
+package com.netz_ai.aws_controller.controller.aws;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
-public class AwsControllerApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(AwsControllerApplication.class, args);
-	}
+@Slf4j
+@Tag(name = "AWS Connect Test", description = "API to test if connection is working")
+@RestController
+@RequestMapping(AwsConnect.URI_BASE_PATH)
+@RequiredArgsConstructor
+public class AwsConnect {
+    public static final String URI_BASE_PATH = "/api/v1/aws/connect";
 
 }
